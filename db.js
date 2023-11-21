@@ -8,9 +8,19 @@ const mongoDB = async () => {
 
   const fetched_data = await mongoose.connection.db.collection("food_items");
   const data = await fetched_data.find({}).toArray();
-
   global.food_items = data;
-  console.log(global.food_items);
+
+  const foodCategory = await mongoose.connection.db.collection("foodCategory");
+  foodCategory
+    .find({})
+    .toArray()
+    .then((categoryData) => {
+      global.foodCategory = categoryData;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // console.log(global.food_items);
 };
 
 module.exports = mongoDB;
