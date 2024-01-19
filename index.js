@@ -21,6 +21,7 @@ app.use(express.json());
 // might have to add fews lines from video if this doesnt work
 app.use("/api", require("./routes/CreateUser"));
 app.use("/api", require("./routes/DisplayData"));
+app.use("/api", require("./routes/OrderData"));
 
 // api endpoints - making separate files for endpoints
 app.get("/", (req, res) => {
